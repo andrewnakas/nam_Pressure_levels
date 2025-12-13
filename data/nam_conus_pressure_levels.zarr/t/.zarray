@@ -1,0 +1,26 @@
+{
+    "chunks": [
+        1,
+        41,
+        21,
+        143,
+        205
+    ],
+    "compressor": {
+        "checksum": false,
+        "id": "zstd",
+        "level": 3
+    },
+    "dtype": "<f4",
+    "fill_value": "NaN",
+    "filters": null,
+    "order": "C",
+    "shape": [
+        1,
+        41,
+        21,
+        428,
+        614
+    ],
+    "zarr_format": 2
+}

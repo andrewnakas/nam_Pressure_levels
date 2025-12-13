@@ -1,0 +1,38 @@
+{
+  "sources": {
+    "nam_conus_pressure_levels": {
+      "driver": "zarr",
+      "args": {
+        "urlpath": "data/nam_conus_pressure_levels.zarr",
+        "consolidated": true
+      },
+      "description": "North American Mesoscale (NAM) CONUS pressure level forecast data at 12km resolution",
+      "metadata": {
+        "title": "NOAA NAM CONUS Pressure Levels Forecast",
+        "provider": "NOAA/NCEP",
+        "model": "NAM",
+        "variant": "CONUS-12km-pressure-levels",
+        "version": "v1.0",
+        "dimensions": {
+          "init_time": 1,
+          "time": 41,
+          "level": 21,
+          "y": 428,
+          "x": 614
+        },
+        "variables": [
+          "gh",
+          "r",
+          "t",
+          "u",
+          "v",
+          "w"
+        ]
+      }
+    }
+  },
+  "metadata": {
+    "version": 1,
+    "description": "NAM CONUS pressure level forecast data in Zarr format"
+  }
+}
