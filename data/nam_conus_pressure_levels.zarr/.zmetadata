@@ -1,0 +1,652 @@
+{
+    "metadata": {
+        ".zattrs": {
+            "Conventions": "CF-1.7",
+            "GRIB_centre": "kwbc",
+            "GRIB_centreDescription": "US National Weather Service - NCEP",
+            "GRIB_edition": 2,
+            "GRIB_subCentre": 0,
+            "created": "2025-12-16T02:31:39.325753+00:00",
+            "description": "North American Mesoscale (NAM) CONUS pressure level forecast data at 12km resolution",
+            "history": "2025-12-16T02:31 GRIB to CDM+CF via cfgrib-0.9.15.1/ecCodes-2.44.1 with {\"source\": \"../../../../../tmp/tmprq72uw3o/nam_f000.grib2\", \"filter_by_keys\": {\"typeOfLevel\": \"isobaricInhPa\"}, \"encode_cf\": [\"parameter\", \"time\", \"geography\", \"vertical\"]}",
+            "institution": "US National Weather Service - NCEP",
+            "model": "NAM",
+            "provider": "NOAA/NCEP",
+            "references": "https://www.nco.ncep.noaa.gov/pmb/products/nam/",
+            "source": "https://nomads.ncep.noaa.gov",
+            "title": "NOAA NAM CONUS Pressure Levels Forecast",
+            "variant": "CONUS-12km-pressure-levels",
+            "version": "v1.0"
+        },
+        ".zgroup": {
+            "zarr_format": 2
+        },
+        "gh/.zarray": {
+            "chunks": [
+                1,
+                41,
+                21,
+                143,
+                205
+            ],
+            "compressor": {
+                "checksum": false,
+                "id": "zstd",
+                "level": 3
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                1,
+                41,
+                21,
+                428,
+                614
+            ],
+            "zarr_format": 2
+        },
+        "gh/.zattrs": {
+            "GRIB_DxInMetres": 12191.0,
+            "GRIB_DyInMetres": 12191.0,
+            "GRIB_LaDInDegrees": 25.0,
+            "GRIB_Latin1InDegrees": 25.0,
+            "GRIB_Latin2InDegrees": 25.0,
+            "GRIB_LoVInDegrees": 265.0,
+            "GRIB_NV": 0,
+            "GRIB_Nx": 614,
+            "GRIB_Ny": 428,
+            "GRIB_cfName": "geopotential_height",
+            "GRIB_cfVarName": "gh",
+            "GRIB_dataType": "fc",
+            "GRIB_gridDefinitionDescription": "Lambert Conformal can be secant or tangent, conical or bipolar",
+            "GRIB_gridType": "lambert",
+            "GRIB_iScansNegatively": 0,
+            "GRIB_jPointsAreConsecutive": 0,
+            "GRIB_jScansPositively": 1,
+            "GRIB_latitudeOfFirstGridPointInDegrees": 12.19,
+            "GRIB_latitudeOfSouthernPoleInDegrees": -90.0,
+            "GRIB_longitudeOfFirstGridPointInDegrees": 226.541,
+            "GRIB_longitudeOfSouthernPoleInDegrees": 0.0,
+            "GRIB_missingValue": 3.4028234663852886e+38,
+            "GRIB_name": "Geopotential height",
+            "GRIB_numberOfPoints": 262792,
+            "GRIB_paramId": 156,
+            "GRIB_shortName": "gh",
+            "GRIB_stepType": "instant",
+            "GRIB_stepUnits": 1,
+            "GRIB_typeOfLevel": "isobaricInhPa",
+            "GRIB_units": "gpm",
+            "GRIB_uvRelativeToGrid": 1,
+            "_ARRAY_DIMENSIONS": [
+                "init_time",
+                "time",
+                "level",
+                "y",
+                "x"
+            ],
+            "coordinates": "time step isobaricInhPa latitude longitude valid_time",
+            "long_name": "Geopotential height",
+            "standard_name": "geopotential_height",
+            "units": "gpm"
+        },
+        "init_time/.zarray": {
+            "chunks": [
+                1
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<i8",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                1
+            ],
+            "zarr_format": 2
+        },
+        "init_time/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "init_time"
+            ],
+            "calendar": "proleptic_gregorian",
+            "units": "days since 2025-12-15 18:00:00"
+        },
+        "latitude/.zarray": {
+            "chunks": [
+                107,
+                307
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                428,
+                614
+            ],
+            "zarr_format": 2
+        },
+        "latitude/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "y",
+                "x"
+            ],
+            "long_name": "latitude",
+            "standard_name": "latitude",
+            "units": "degrees_north"
+        },
+        "level/.zarray": {
+            "chunks": [
+                21
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                21
+            ],
+            "zarr_format": 2
+        },
+        "level/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "level"
+            ],
+            "long_name": "pressure",
+            "positive": "down",
+            "standard_name": "air_pressure",
+            "stored_direction": "decreasing",
+            "units": "hPa"
+        },
+        "longitude/.zarray": {
+            "chunks": [
+                107,
+                307
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                428,
+                614
+            ],
+            "zarr_format": 2
+        },
+        "longitude/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "y",
+                "x"
+            ],
+            "long_name": "longitude",
+            "standard_name": "longitude",
+            "units": "degrees_east"
+        },
+        "r/.zarray": {
+            "chunks": [
+                1,
+                41,
+                21,
+                143,
+                205
+            ],
+            "compressor": {
+                "checksum": false,
+                "id": "zstd",
+                "level": 3
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                1,
+                41,
+                21,
+                428,
+                614
+            ],
+            "zarr_format": 2
+        },
+        "r/.zattrs": {
+            "GRIB_DxInMetres": 12191.0,
+            "GRIB_DyInMetres": 12191.0,
+            "GRIB_LaDInDegrees": 25.0,
+            "GRIB_Latin1InDegrees": 25.0,
+            "GRIB_Latin2InDegrees": 25.0,
+            "GRIB_LoVInDegrees": 265.0,
+            "GRIB_NV": 0,
+            "GRIB_Nx": 614,
+            "GRIB_Ny": 428,
+            "GRIB_cfName": "relative_humidity",
+            "GRIB_cfVarName": "r",
+            "GRIB_dataType": "fc",
+            "GRIB_gridDefinitionDescription": "Lambert Conformal can be secant or tangent, conical or bipolar",
+            "GRIB_gridType": "lambert",
+            "GRIB_iScansNegatively": 0,
+            "GRIB_jPointsAreConsecutive": 0,
+            "GRIB_jScansPositively": 1,
+            "GRIB_latitudeOfFirstGridPointInDegrees": 12.19,
+            "GRIB_latitudeOfSouthernPoleInDegrees": -90.0,
+            "GRIB_longitudeOfFirstGridPointInDegrees": 226.541,
+            "GRIB_longitudeOfSouthernPoleInDegrees": 0.0,
+            "GRIB_missingValue": 3.4028234663852886e+38,
+            "GRIB_name": "Relative humidity",
+            "GRIB_numberOfPoints": 262792,
+            "GRIB_paramId": 157,
+            "GRIB_shortName": "r",
+            "GRIB_stepType": "instant",
+            "GRIB_stepUnits": 1,
+            "GRIB_typeOfLevel": "isobaricInhPa",
+            "GRIB_units": "%",
+            "GRIB_uvRelativeToGrid": 1,
+            "_ARRAY_DIMENSIONS": [
+                "init_time",
+                "time",
+                "level",
+                "y",
+                "x"
+            ],
+            "coordinates": "time step isobaricInhPa latitude longitude valid_time",
+            "long_name": "Relative humidity",
+            "standard_name": "relative_humidity",
+            "units": "%"
+        },
+        "step/.zarray": {
+            "chunks": [
+                41
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                41
+            ],
+            "zarr_format": 2
+        },
+        "step/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time"
+            ],
+            "dtype": "timedelta64[ns]",
+            "long_name": "time since forecast_reference_time",
+            "standard_name": "forecast_period",
+            "units": "hours"
+        },
+        "t/.zarray": {
+            "chunks": [
+                1,
+                41,
+                21,
+                143,
+                205
+            ],
+            "compressor": {
+                "checksum": false,
+                "id": "zstd",
+                "level": 3
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                1,
+                41,
+                21,
+                428,
+                614
+            ],
+            "zarr_format": 2
+        },
+        "t/.zattrs": {
+            "GRIB_DxInMetres": 12191.0,
+            "GRIB_DyInMetres": 12191.0,
+            "GRIB_LaDInDegrees": 25.0,
+            "GRIB_Latin1InDegrees": 25.0,
+            "GRIB_Latin2InDegrees": 25.0,
+            "GRIB_LoVInDegrees": 265.0,
+            "GRIB_NV": 0,
+            "GRIB_Nx": 614,
+            "GRIB_Ny": 428,
+            "GRIB_cfName": "air_temperature",
+            "GRIB_cfVarName": "t",
+            "GRIB_dataType": "fc",
+            "GRIB_gridDefinitionDescription": "Lambert Conformal can be secant or tangent, conical or bipolar",
+            "GRIB_gridType": "lambert",
+            "GRIB_iScansNegatively": 0,
+            "GRIB_jPointsAreConsecutive": 0,
+            "GRIB_jScansPositively": 1,
+            "GRIB_latitudeOfFirstGridPointInDegrees": 12.19,
+            "GRIB_latitudeOfSouthernPoleInDegrees": -90.0,
+            "GRIB_longitudeOfFirstGridPointInDegrees": 226.541,
+            "GRIB_longitudeOfSouthernPoleInDegrees": 0.0,
+            "GRIB_missingValue": 3.4028234663852886e+38,
+            "GRIB_name": "Temperature",
+            "GRIB_numberOfPoints": 262792,
+            "GRIB_paramId": 130,
+            "GRIB_shortName": "t",
+            "GRIB_stepType": "instant",
+            "GRIB_stepUnits": 1,
+            "GRIB_typeOfLevel": "isobaricInhPa",
+            "GRIB_units": "K",
+            "GRIB_uvRelativeToGrid": 1,
+            "_ARRAY_DIMENSIONS": [
+                "init_time",
+                "time",
+                "level",
+                "y",
+                "x"
+            ],
+            "coordinates": "time step isobaricInhPa latitude longitude valid_time",
+            "long_name": "Temperature",
+            "standard_name": "air_temperature",
+            "units": "K"
+        },
+        "time/.zarray": {
+            "chunks": [
+                41
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<i8",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                41
+            ],
+            "zarr_format": 2
+        },
+        "time/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time"
+            ],
+            "calendar": "proleptic_gregorian",
+            "long_name": "initial time of forecast",
+            "standard_name": "forecast_reference_time",
+            "units": "seconds since 1970-01-01"
+        },
+        "u/.zarray": {
+            "chunks": [
+                1,
+                41,
+                21,
+                143,
+                205
+            ],
+            "compressor": {
+                "checksum": false,
+                "id": "zstd",
+                "level": 3
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                1,
+                41,
+                21,
+                428,
+                614
+            ],
+            "zarr_format": 2
+        },
+        "u/.zattrs": {
+            "GRIB_DxInMetres": 12191.0,
+            "GRIB_DyInMetres": 12191.0,
+            "GRIB_LaDInDegrees": 25.0,
+            "GRIB_Latin1InDegrees": 25.0,
+            "GRIB_Latin2InDegrees": 25.0,
+            "GRIB_LoVInDegrees": 265.0,
+            "GRIB_NV": 0,
+            "GRIB_Nx": 614,
+            "GRIB_Ny": 428,
+            "GRIB_cfName": "eastward_wind",
+            "GRIB_cfVarName": "u",
+            "GRIB_dataType": "fc",
+            "GRIB_gridDefinitionDescription": "Lambert Conformal can be secant or tangent, conical or bipolar",
+            "GRIB_gridType": "lambert",
+            "GRIB_iScansNegatively": 0,
+            "GRIB_jPointsAreConsecutive": 0,
+            "GRIB_jScansPositively": 1,
+            "GRIB_latitudeOfFirstGridPointInDegrees": 12.19,
+            "GRIB_latitudeOfSouthernPoleInDegrees": -90.0,
+            "GRIB_longitudeOfFirstGridPointInDegrees": 226.541,
+            "GRIB_longitudeOfSouthernPoleInDegrees": 0.0,
+            "GRIB_missingValue": 3.4028234663852886e+38,
+            "GRIB_name": "U component of wind",
+            "GRIB_numberOfPoints": 262792,
+            "GRIB_paramId": 131,
+            "GRIB_shortName": "u",
+            "GRIB_stepType": "instant",
+            "GRIB_stepUnits": 1,
+            "GRIB_typeOfLevel": "isobaricInhPa",
+            "GRIB_units": "m s**-1",
+            "GRIB_uvRelativeToGrid": 1,
+            "_ARRAY_DIMENSIONS": [
+                "init_time",
+                "time",
+                "level",
+                "y",
+                "x"
+            ],
+            "coordinates": "time step isobaricInhPa latitude longitude valid_time",
+            "long_name": "U component of wind",
+            "standard_name": "eastward_wind",
+            "units": "m s**-1"
+        },
+        "v/.zarray": {
+            "chunks": [
+                1,
+                41,
+                21,
+                143,
+                205
+            ],
+            "compressor": {
+                "checksum": false,
+                "id": "zstd",
+                "level": 3
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                1,
+                41,
+                21,
+                428,
+                614
+            ],
+            "zarr_format": 2
+        },
+        "v/.zattrs": {
+            "GRIB_DxInMetres": 12191.0,
+            "GRIB_DyInMetres": 12191.0,
+            "GRIB_LaDInDegrees": 25.0,
+            "GRIB_Latin1InDegrees": 25.0,
+            "GRIB_Latin2InDegrees": 25.0,
+            "GRIB_LoVInDegrees": 265.0,
+            "GRIB_NV": 0,
+            "GRIB_Nx": 614,
+            "GRIB_Ny": 428,
+            "GRIB_cfName": "northward_wind",
+            "GRIB_cfVarName": "v",
+            "GRIB_dataType": "fc",
+            "GRIB_gridDefinitionDescription": "Lambert Conformal can be secant or tangent, conical or bipolar",
+            "GRIB_gridType": "lambert",
+            "GRIB_iScansNegatively": 0,
+            "GRIB_jPointsAreConsecutive": 0,
+            "GRIB_jScansPositively": 1,
+            "GRIB_latitudeOfFirstGridPointInDegrees": 12.19,
+            "GRIB_latitudeOfSouthernPoleInDegrees": -90.0,
+            "GRIB_longitudeOfFirstGridPointInDegrees": 226.541,
+            "GRIB_longitudeOfSouthernPoleInDegrees": 0.0,
+            "GRIB_missingValue": 3.4028234663852886e+38,
+            "GRIB_name": "V component of wind",
+            "GRIB_numberOfPoints": 262792,
+            "GRIB_paramId": 132,
+            "GRIB_shortName": "v",
+            "GRIB_stepType": "instant",
+            "GRIB_stepUnits": 1,
+            "GRIB_typeOfLevel": "isobaricInhPa",
+            "GRIB_units": "m s**-1",
+            "GRIB_uvRelativeToGrid": 1,
+            "_ARRAY_DIMENSIONS": [
+                "init_time",
+                "time",
+                "level",
+                "y",
+                "x"
+            ],
+            "coordinates": "time step isobaricInhPa latitude longitude valid_time",
+            "long_name": "V component of wind",
+            "standard_name": "northward_wind",
+            "units": "m s**-1"
+        },
+        "valid_time/.zarray": {
+            "chunks": [
+                41
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                41
+            ],
+            "zarr_format": 2
+        },
+        "valid_time/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time"
+            ],
+            "calendar": "proleptic_gregorian",
+            "long_name": "time",
+            "standard_name": "time",
+            "units": "seconds since 1970-01-01"
+        },
+        "w/.zarray": {
+            "chunks": [
+                1,
+                41,
+                21,
+                143,
+                205
+            ],
+            "compressor": {
+                "checksum": false,
+                "id": "zstd",
+                "level": 3
+            },
+            "dtype": "<f4",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                1,
+                41,
+                21,
+                428,
+                614
+            ],
+            "zarr_format": 2
+        },
+        "w/.zattrs": {
+            "GRIB_DxInMetres": 12191.0,
+            "GRIB_DyInMetres": 12191.0,
+            "GRIB_LaDInDegrees": 25.0,
+            "GRIB_Latin1InDegrees": 25.0,
+            "GRIB_Latin2InDegrees": 25.0,
+            "GRIB_LoVInDegrees": 265.0,
+            "GRIB_NV": 0,
+            "GRIB_Nx": 614,
+            "GRIB_Ny": 428,
+            "GRIB_cfName": "lagrangian_tendency_of_air_pressure",
+            "GRIB_cfVarName": "w",
+            "GRIB_dataType": "fc",
+            "GRIB_gridDefinitionDescription": "Lambert Conformal can be secant or tangent, conical or bipolar",
+            "GRIB_gridType": "lambert",
+            "GRIB_iScansNegatively": 0,
+            "GRIB_jPointsAreConsecutive": 0,
+            "GRIB_jScansPositively": 1,
+            "GRIB_latitudeOfFirstGridPointInDegrees": 12.19,
+            "GRIB_latitudeOfSouthernPoleInDegrees": -90.0,
+            "GRIB_longitudeOfFirstGridPointInDegrees": 226.541,
+            "GRIB_longitudeOfSouthernPoleInDegrees": 0.0,
+            "GRIB_missingValue": 3.4028234663852886e+38,
+            "GRIB_name": "Vertical velocity",
+            "GRIB_numberOfPoints": 262792,
+            "GRIB_paramId": 135,
+            "GRIB_shortName": "w",
+            "GRIB_stepType": "instant",
+            "GRIB_stepUnits": 1,
+            "GRIB_typeOfLevel": "isobaricInhPa",
+            "GRIB_units": "Pa s**-1",
+            "GRIB_uvRelativeToGrid": 1,
+            "_ARRAY_DIMENSIONS": [
+                "init_time",
+                "time",
+                "level",
+                "y",
+                "x"
+            ],
+            "coordinates": "time step isobaricInhPa latitude longitude valid_time",
+            "long_name": "Vertical velocity",
+            "standard_name": "lagrangian_tendency_of_air_pressure",
+            "units": "Pa s**-1"
+        }
+    },
+    "zarr_consolidated_format": 1
+}

@@ -1,0 +1,160 @@
+name: Update NAM Pressure Levels Data
+
+on:
+  schedule:
+    # Run every 6 hours at minute 30 (NAM runs 4x daily at 00, 06, 12, 18 UTC)
+    - cron: '30 */6 * * *'
+  workflow_dispatch:  # Allow manual triggering
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: data-update
+  cancel-in-progress: false
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Free up disk space
+        run: |
+          echo "=== Disk space before cleanup ==="
+          df -h
+
+          # Remove unnecessary pre-installed software
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /opt/hostedtoolcache/CodeQL
+
+          # Clean package manager caches
+          sudo apt-get clean
+          sudo rm -rf /var/lib/apt/lists/*
+
+          echo "=== Disk space after cleanup ==="
+          df -h
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Need full history for orphan branch approach
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libeccodes-dev
+
+      - name: Create necessary directories
+        run: |
+          mkdir -p data
+          mkdir -p catalog
+          mkdir -p data_summary
+
+      - name: Install package
+        run: |
+          uv pip install --system -e .
+          uv pip install --system cfgrib eccodes
+
+      - name: Check and reset dimensions if needed
+        run: |
+          python scripts/check_and_reset_dimensions.py
+
+      - name: Run operational update
+        timeout-minutes: 90
+        run: |
+          set -e  # Exit on any error
+          nam-zarr operational-update --dataset-id noaa-nam-conus-pressure-levels --output-dir ./data --verbose
+        continue-on-error: false
+
+      - name: Verify Zarr store exists
+        run: |
+          if [ ! -d "data/nam_conus_pressure_levels.zarr" ]; then
+            echo "Error: Zarr store was not created"
+            exit 1
+          fi
+          echo "Zarr store verified"
+
+      - name: Generate catalog
+        run: |
+          python scripts/generate_catalog.py
+
+      - name: Create summary
+        run: |
+          python scripts/create_summary.py
+
+      - name: Clean up old forecasts
+        run: |
+          python scripts/cleanup_old_forecasts.py --keep-latest-only
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Check if there are changes
+          git add data/ catalog/ data_summary/
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            echo "Changes detected, creating new commit..."
+
+            # Create orphan branch (no history) to keep repo size minimal
+            git checkout --orphan new_main
+
+            # Add all files
+            git add -A
+
+            # Create single commit with all data
+            git commit -m "Update NAM pressure levels data - $(date -u '+%Y-%m-%d %H:%M UTC')"
+
+            # Delete old main branch and rename new one
+            git branch -D main || true
+            git branch -m main
+
+            # Force push (this is safe since we're the only ones pushing)
+            echo "Force pushing to keep history clean..."
+            git push -f origin main
+
+            echo "Repository history squashed successfully"
+          fi
+
+  deploy-catalog:
+    needs: update-data
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload catalog artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './catalog'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
