@@ -1,0 +1,18 @@
+{
+    "Conventions": "CF-1.7",
+    "GRIB_centre": "kwbc",
+    "GRIB_centreDescription": "US National Weather Service - NCEP",
+    "GRIB_edition": 2,
+    "GRIB_subCentre": 0,
+    "created": "2026-05-05T03:58:04.264364+00:00",
+    "description": "North American Mesoscale (NAM) CONUS pressure level forecast data at 12km resolution",
+    "history": "2026-05-05T03:57 GRIB to CDM+CF via cfgrib-0.9.15.1/ecCodes-2.46.2 with {\"source\": \"../../../../../tmp/tmpjj3du462/nam_f001.grib2\", \"filter_by_keys\": {\"typeOfLevel\": \"isobaricInhPa\"}, \"encode_cf\": [\"parameter\", \"time\", \"geography\", \"vertical\"]}",
+    "institution": "US National Weather Service - NCEP",
+    "model": "NAM",
+    "provider": "NOAA/NCEP",
+    "references": "https://www.nco.ncep.noaa.gov/pmb/products/nam/",
+    "source": "https://nomads.ncep.noaa.gov",
+    "title": "NOAA NAM CONUS Pressure Levels Forecast",
+    "variant": "CONUS-12km-pressure-levels",
+    "version": "v1.0"
+}

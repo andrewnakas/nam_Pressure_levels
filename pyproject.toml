@@ -1,0 +1,58 @@
+[project]
+name = "nam-to-zarr"
+version = "0.1.0"
+description = "Reformatter for NOAA North American Mesoscale (NAM) pressure level datasets into zarr"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "xarray>=2024.9.0",
+    "zarr>=2.18.3,<3",
+    "numcodecs>=0.12.0",
+    "dask>=2024.9.0",
+    "numpy>=2.1.1",
+    "pandas>=2.2.2",
+    "cfgrib>=0.9.10",
+    "eccodes>=1.6.0",
+    "pydantic>=2.9.1",
+    "typer>=0.12.5",
+    "rich>=13.8.1",
+    "requests>=2.32.3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.6.5",
+    "mypy>=1.11.2",
+    "pytest>=8.3.3",
+    "pre-commit>=3.8.0",
+]
+
+[project.scripts]
+nam-zarr = "nam_to_zarr.__main__:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+    "E", "W", "F", "I", "N", "UP", "ANN", "ASYNC", "S", "B", "A", "COM", "C4",
+    "DTZ", "T10", "EXE", "ISC", "ICN", "G", "PIE", "T20", "PT", "Q", "RSE",
+    "RET", "SIM", "TID", "TCH", "ARG", "ERA", "PD", "PGH", "PL", "TRY", "NPY",
+    "RUF"
+]
+ignore = [
+    "ANN101", "ANN102",  # Missing type annotation for self/cls
+    "COM812",  # Trailing comma missing
+    "ISC001",  # Single line implicit string concatenation
+]
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
